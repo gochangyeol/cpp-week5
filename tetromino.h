@@ -43,7 +43,17 @@ public:
   // XXXX
   //
   // Tetromino I("I", 4, "XXXXOOOOXXXXXXXX")
-  Tetromino(std::string name, int size, std::string shape);
+  Tetromino(std::string name, int size, std::string shape){
+    original_=this;
+    name_=name;
+    size_=size;
+
+    for(int i=0;i<size_;i++){
+      for(int j=0;j<size_;j++){
+        shape_[i][j]=(shape[i*size+j]=='O');
+      }
+    }
+  }
 
   // 이름을 반환한다.
   std::string name() { return name_; }
